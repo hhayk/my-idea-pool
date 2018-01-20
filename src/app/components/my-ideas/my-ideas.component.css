@@ -1,0 +1,72 @@
+.ideas-container {
+    margin: 0px 78px;
+}
+
+.header {
+    margin-top: 44px;
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.my-ideas-title {
+    font-family: '.SFNSDisplay';
+    font-size: 28px;
+    color: #2A3842;
+    margin-left: 36px;
+}
+
+.my-ideas-hr {
+    border-bottom: 1px solid rgba(42,56,66,0.20);
+}
+
+.idea-img {
+    margin-top: 246px;
+}
+
+.got-idea {
+    font-family: '.SFNSDisplay';
+    font-size: 20px;
+    line-height: 20px;
+    color: #2A3842;
+    margin-top: 23px;
+}
+
+.table {
+    margin-top: 39px;
+    display: table;
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
+    width: 100%;
+}
+
+.table-row {
+    height: 49px;
+    display: table-row;
+}
+
+.table-row-item {
+    display: table-cell;
+}
+
+.idea-info {
+    font-size: 14px;
+    color: #2A3842;
+    width: 90px;
+}
+
+.average {
+    font-family: OpenSans-Bold;
+    font-size: 14px;
+    color: #2A3842;
+    font-weight: bold;
+    width: 69px;
+}
+
+.action-btn {
+    width: 41px;
+}
+
+.dot {
+    width: 24px;
+}

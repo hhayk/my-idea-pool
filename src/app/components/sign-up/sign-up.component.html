@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row title-container">
+    <div class="title">Sign Up</div>
+    <div *ngIf="signupErrorReason.length > 0" class="alert alert-danger error-reason">{{signupErrorReason}}</div>
+  </div>
+  <form class="row" [formGroup]="signupForm" (ngSubmit)="onSubmit(signupForm.value)">
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="name" required placeholder="Name" appAutoFocus/>
+      <div class="hr"></div>
+      <div *ngIf="signupForm.controls.name.touched && formErrors.name" class="alert alert-danger">
+        {{ formErrors.name }}
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="email" required placeholder="Email" />
+      <div class="hr"></div>
+      <div *ngIf="signupForm.controls.email.touched && formErrors.email" class="alert alert-danger">
+        {{ formErrors.email }}
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" formControlName="password" required placeholder="Password" />
+      <div class="hr"></div>
+      <div *ngIf="signupForm.controls.password.touched && formErrors.password" class="alert alert-danger">
+        {{ formErrors.password }}
+      </div>
+    </div>
+    <div class="btn-holder">
+      <button type="submit" class="btn btn-success" [disabled]="!signupForm.valid || inRequest">
+        SIGN UP
+      </button>
+      <span>Already have an account?
+        <a routerLink="/login" class="link">Log in</a>
+      </span>
+    </div>
+  </form>
+
+</div>

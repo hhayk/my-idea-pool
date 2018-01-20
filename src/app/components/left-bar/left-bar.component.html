@@ -1,0 +1,14 @@
+<div class="left-container background-green-color">
+    <div class="idea-pool-container">
+        <img class="idea-pool-logo center-block" src="/assets/IdeaPool_icon.png" srcset="/assets/IdeaPool_icon@2x.png 2x"/>
+        <p class="idea-pool-title">The Idea Pool</p>
+    </div>
+    <div *ngIf="authService.hasUser()">
+        <div class="left-bar-hr"></div>
+        <div class="logged-user">
+            <img class="center-block avatar-img" src="{{authService.user.avatar_url}}"/>
+            <p class="user-name">{{authService.user.name}}</p>
+        </div>
+        <p class="link" (click)="logout()">Log out</p>
+    </div>
+</div>

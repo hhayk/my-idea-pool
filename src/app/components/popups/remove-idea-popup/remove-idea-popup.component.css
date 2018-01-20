@@ -1,0 +1,78 @@
+.remove-idea-popup-container {
+    width: 400px;
+    height: 250px;
+    text-align: center;
+}
+
+.remove-idea-popup-title {
+    font-family: '.SFNSDisplay';
+    font-size: 24px;
+    color: #2A3842;
+    margin-top: 30px;
+}
+
+.remove-idea-popup-info {
+    font-family: '.AppleSystemUIFont';
+    font-size: 16px;
+    color: #2A3842;
+    letter-spacing: -0.1px;
+    line-height: 16px;
+    margin-top: 36px;
+}
+
+.remove-idea-popup-group-btn {
+    margin-top: 86px;
+}
+
+.action-btn {
+    font-family: OpenSans-Semibold;
+    font-size: 18px;
+    letter-spacing: -0.11px;
+}
+
+.cancel-btn {
+    color: #2A3842;
+}
+
+.ok-btn {
+    color: #00A843;
+}
+
+.divider {
+    margin: 0px 55px;
+}
+
+.popup-container {
+    position: absolute;
+    background: #FFFFFF;
+    box-shadow: 0 0 20px 0 rgba(0,0,0,0.30);
+    border-radius: 3px;
+    top: 50%;
+    left: 50%;
+    margin-top: -125px;
+    margin-left: -200px;
+    z-index: 20;
+  }
+  
+.popup-container:after {
+    position: fixed;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: transparent;
+    z-index: -2;
+}
+
+.popup-container:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: transparent;
+    z-index: -1;
+}
+  

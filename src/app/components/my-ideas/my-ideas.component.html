@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="ideas-container">
+    <div class="header">
+      <p class="my-ideas-title">My Ideas</p>
+      <img class="btn" src="/assets/btn_addanidea.png" srcset="/assets/btn_addanidea@2x.png 2x" (click)="createIdea()">
+    </div>
+    <div class="my-ideas-hr"></div>
+    <div class="my-ideas-container" *ngIf="!isLoading">
+      <div *ngIf="ideaService.ideas.length == 0; then noIdeas; else hasIdeas">
+      </div>
+    </div>
+    <div class="my-ideas-container" *ngIf="isLoading">
+      <p class="loader">Loading Ideas...</p>
+    </div>
+  </div>
+</div>
+
+<ng-template #noIdeas>
+  <img class="idea-img center-block" src="/assets/bulb.png" srcset="/assets/bulb@2x.png 2x">
+  <p class="got-idea">Got Ideas?</p>
+</ng-template>
+
+<ng-template #hasIdeas>
+  <div class="table">
+    <div class="table-row table-header">
+      <div class="table-row-item dot"></div>
+      <div class="table-row-item"></div>
+      <div class="table-row-item idea-info">Impact</div>
+      <div class="table-row-item idea-info">Ease</div>
+      <div class="table-row-item idea-info">Confidence</div>
+      <div class="table-row-item average">Avg.</div>
+      <div class="table-row-item action-btn"></div>
+      <div class="table-row-item action-btn"></div>
+    </div>
+    <app-new-idea class="table-row" [idea]="idea" *ngFor="let idea of ideaService.ideas; let i=index" (saveIdeaEmitter)="saveIdea($event)"
+      (revertEmitter)="revertIdea($event)" (deleteIdeaEmitter)="deleteIdea($event)">
+    </app-new-idea>
+  </div>
+
+  <button class="btn btn-success" *ngIf="newIdeasLength == 10" (click)="loadMore()">Load More</button>
+</ng-template>
