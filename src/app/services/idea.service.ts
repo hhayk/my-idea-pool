@@ -14,7 +14,9 @@ export class IdeaService {
     this.http
       .post(this.environmentService.api + '/ideas', JSON.stringify(idea), { headers: this.environmentService.headers })
       .subscribe(resp => {
-        this.ideas[this.ideas.indexOf(idea)] = resp as Idea;
+        const si = this.getIdeaIndexByHash(idea);
+        this.ideas[si] = resp as Idea;
+
         success();
       }, err => {
         error(err);
@@ -35,8 +37,9 @@ export class IdeaService {
     this.http
       .delete(this.environmentService.api + '/ideas/' + idea.id, { headers: this.environmentService.headers })
       .subscribe(resp => {
-        const si = this.ideas.filter(id => id.id === idea.id).shift();
-        this.ideas.splice(this.ideas.indexOf(si), 1);
+        const si = this.ideas.indexOf(this.ideas.filter(id => id.id === idea.id).shift());
+        this.ideas.splice(si, 1);
+
         success();
       }, err => {
         error(err);
@@ -54,6 +57,10 @@ export class IdeaService {
       }, err => {
         error(err);
       });
+  }
+
+  getIdeaIndexByHash(idea: Idea) {
+    return this.ideas.indexOf(this.ideas.filter(id => id.hash === idea.hash).shift());
   }
 
   clear() {

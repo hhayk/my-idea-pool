@@ -1,14 +1,14 @@
 <div *ngIf="inEditMode; then editMode; else staticMode"></div>
 
 <ng-template #editMode>
-    <div class="table-row-item" [@flyInOut]="in">
+    <div class="table-row-item" [@flyInOut]="animationType">
         <div class="dot"></div>
     </div>
-    <div class="table-row-item idea-title-row" [@flyInOut]="in">
+    <div class="table-row-item idea-title-row" [@flyInOut]="animationType">
         <input #contentInput type="text" class="idea-title" [(ngModel)]="ideaClone.content" appAutoFocus>
         <div class="hr hr-idea-margin" [class.hr-idea-margin-error]="contentEmpty"></div>
     </div>
-    <div class="table-row-item number-input" [@flyInOut]="in">
+    <div class="table-row-item number-input" [@flyInOut]="animationType">
         <div class="number-arrow-group">
             <input #impactInput type="number" class="number-selector" min="0" max="10" [(ngModel)]="ideaClone.impact">
             <div class="number-arrow top-arrow" (click)="changeValue(impactInput, ideaClone, 'impact', 1)">
@@ -19,7 +19,7 @@
             </div>
         </div>
     </div>
-    <div class="table-row-item number-input" [@flyInOut]="in">
+    <div class="table-row-item number-input" [@flyInOut]="animationType">
         <div class="number-arrow-group">
             <input #easeInput type="number" class="number-selector" min="0" max="10" [(ngModel)]="ideaClone.ease">
             <div class="number-arrow top-arrow" (click)="changeValue(easeInput, ideaClone, 'ease', 1)">
@@ -30,7 +30,7 @@
             </div>
         </div>
     </div>
-    <div class="table-row-item number-input" [@flyInOut]="in">
+    <div class="table-row-item number-input" [@flyInOut]="animationType">
         <div class="number-arrow-group">
             <input #confidenceInput type="number" class="number-selector" min="0" max="10" [(ngModel)]="ideaClone.confidence">
             <div class="number-arrow top-arrow" (click)="changeValue(confidenceInput, ideaClone, 'confidence', 1)">
@@ -41,11 +41,11 @@
             </div>
         </div>
     </div>
-    <div class="table-row-item" [@flyInOut]="in">{{ideaClone.average_score | number}}</div>
-    <div class="table-row-item" [@flyInOut]="in">
+    <div class="table-row-item" [@flyInOut]="animationType">{{ideaClone.average_score | number}}</div>
+    <div class="table-row-item" [@flyInOut]="animationType">
         <img class="btn center-block" src="/assets/Confirm_V.png" srcset="/assets/Confirm_V@2x.png 2x" (click)="saveIdea()">
     </div>
-    <div class="table-row-item" [@flyInOut]="in">
+    <div class="table-row-item" [@flyInOut]="animationType">
         <img class="btn center-block" src="/assets/Cancel_X.png" srcset="/assets/Cancel_X@2x.png 2x" (click)="revertIdea()">
     </div>
 </ng-template>

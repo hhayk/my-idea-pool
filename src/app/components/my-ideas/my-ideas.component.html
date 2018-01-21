@@ -32,10 +32,13 @@
       <div class="table-row-item action-btn"></div>
       <div class="table-row-item action-btn"></div>
     </div>
-    <app-new-idea class="table-row" [idea]="idea" *ngFor="let idea of ideaService.ideas; let i=index" (saveIdeaEmitter)="saveIdea($event)"
-      (revertEmitter)="revertIdea($event)" (deleteIdeaEmitter)="deleteIdea($event)">
+    <app-new-idea class="table-row" [idea]="idea" *ngFor="let idea of ideaService.ideas; let i=index"
+      (saveIdeaEmitter)="saveIdea($event)"
+      (revertEmitter)="revertIdea($event)" 
+      (deleteIdeaEmitter)="deleteIdea($event)"
+      >
     </app-new-idea>
   </div>
 
-  <button class="btn btn-success" *ngIf="newIdeasLength == 10" (click)="loadMore()">Load More</button>
+  <button class="btn btn-success btn-load-more" *ngIf="newIdeasLength == 10" (click)="loadMore()">Load More</button>
 </ng-template>

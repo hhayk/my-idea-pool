@@ -46,7 +46,8 @@ export class MyIdeasComponent implements OnInit {
   }
 
   revertIdea(idea) {
-    this.ideaService.ideas.splice(this.ideaService.ideas.indexOf(idea), 1);
+    const si = this.ideaService.getIdeaIndexByHash(idea);
+    this.ideaService.ideas.splice(si, 1);
   }
 
   deleteIdea(idea) {

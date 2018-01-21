@@ -40,8 +40,8 @@ export class LogInComponent implements OnInit {
 
   buildForm() {
     this.loginForm = new FormGroup({
-      email: new FormControl('aaa@gmail.com', Validators.compose([Validators.required, this.validationService.emailValidator])),
-      password: new FormControl('1Aaaaaaa', Validators.compose([Validators.required, this.validationService.passwordValidator]))
+      email: new FormControl(null, Validators.compose([Validators.required, this.validationService.emailValidator])),
+      password: new FormControl(null, Validators.compose([Validators.required, this.validationService.passwordValidator]))
     });
 
     this.loginForm.valueChanges.subscribe(data => this.validationService.onValueChanged(data, this.loginForm, this.formErrors, this.validationMessages));

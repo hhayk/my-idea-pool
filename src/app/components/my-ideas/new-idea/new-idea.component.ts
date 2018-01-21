@@ -9,13 +9,18 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   styleUrls: ['./new-idea.component.css'],
   animations: [
     trigger('flyInOut', [
-      state('in', style({ opacity: 1, transform: 'translateY(0)' })),
-      transition('void => *', [
+      transition('void => newIdea', [
         style({
           opacity: 0,
           transform: 'translateY(-100%)'
         }),
         animate('0.3s ease-in')
+      ]),
+      transition('void => editIdea', [
+        style({
+          opacity: 0,
+        }),
+        animate('0.8s ease-in')
       ])
     ])
   ]
@@ -25,6 +30,7 @@ export class NewIdeaComponent implements OnInit {
 
   ideaClone: Idea;
   inEditMode: boolean;
+  animationType: string;
 
   contentEmpty: boolean;
 
@@ -38,14 +44,16 @@ export class NewIdeaComponent implements OnInit {
 
   ngOnInit() {
     if (this.idea.id === undefined) {
+      this.animationType = 'newIdea';
       this.editIdea();
+    } else {
+      this.animationType = 'editIdea';
     }
   }
 
   changeValue(ee, model, field, step) { // insane hack
-    model[field] += step;
-    model[field] = Math.min(model[field], ee.max);
-    model[field] = Math.max(model[field], ee.min);
+    const newVal = model[field] + step;
+    model[field] = Math.min(Math.max(newVal, ee.min), ee.max);
 
     const idea = this.ideaClone;
     idea.average_score = (idea.impact + idea.ease + idea.confidence) / 3;
@@ -59,6 +67,8 @@ export class NewIdeaComponent implements OnInit {
       this.inEditMode = false;
       this.ideaClone = undefined;
       this.saveIdeaEmitter.emit(this.idea);
+
+      this.animationType = 'editIdea';
     } else {
       this.contentInputEl.nativeElement.focus();
     }

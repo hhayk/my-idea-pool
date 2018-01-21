@@ -8,6 +8,8 @@ export class Idea {
     public confidence: number;
     public average_score: number;
 
+    hash: number = Math.random() * 10000000;
+
     constructor() {
         this.content = '';
         this.impact = 10;
